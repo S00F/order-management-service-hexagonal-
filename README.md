@@ -107,3 +107,48 @@ This README provides:
 - API documentation
 - Project structure
 - Database information
+
+
+
+## API Documentation
+
+### Swagger UI
+The API documentation is available through Swagger UI at:
+http://localhost:8080/orderms/swagger-ui.html
+
+
+### OpenAPI Endpoints
+- OpenAPI UI: `http://localhost:8080/ordermsswagger-ui.html`
+- OpenAPI Documentation: `http://localhost:8080/ordermsv3/api-docs`
+- OpenAPI YAML: `http://localhost:8080/orderms/v3/api-docs.yaml`
+
+### Available API Operations
+- Orders
+    - `GET /api/orders` - List all orders
+    - `GET /api/orders/{id}` - Get order by ID
+    - `POST /api/orders` - Create new order
+    - `PUT /api/orders/{id}` - Update order
+    - `DELETE /api/orders/{id}` - Delete order
+
+### Sample Request Bodies
+
+#### Create Order
+```json
+{
+  "customerId": "CUST001",
+  "items": [
+    {
+      "productId": "PROD001",
+      "quantity": 2,
+      "unitPrice": 149.99
+    }
+  ]
+}
+```
+
+Update Order Status
+```json
+{
+"status": "CONFIRMED"
+}
+```

@@ -1,3 +1,6 @@
+server:
+  servlet:
+    context-path: /orderms
 spring:
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
