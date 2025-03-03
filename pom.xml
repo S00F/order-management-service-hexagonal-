@@ -71,6 +71,15 @@
             <version>2.2.0</version>
         </dependency>
 
+        <!-- Spring Actuator -->
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+
         <!-- Test Dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -111,6 +120,14 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+            <!-- SonarQube -->
+
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.1.2184</version>
+            </plugin>
+
         </plugins>
     </build>
 </project>

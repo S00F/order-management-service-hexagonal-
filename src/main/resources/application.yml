@@ -22,3 +22,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,info,prometheus
+  endpoint:
+    health:
+      show-details: always
