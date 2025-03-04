@@ -1,4 +1,4 @@
-name: Order Service CI/CD
+name: Order Service CI-CD
 
 on:
   push:
