@@ -1,4 +1,9 @@
 replicaCount: 3
+
+image:
+  repository: gcr.io/gke-demo/order-service
+  tag: stable
+
 resources:
   limits:
     cpu: 2000m
@@ -9,10 +14,13 @@ resources:
 
 ingress:
   hosts:
-    - host: orders.production.com
-      paths:
-        - path: /
-          pathType: Prefix
+    - host: orders.gke-demo.com
 
 env:
   SPRING_PROFILES_ACTIVE: prod
+  GOOGLE_CLOUD_PROJECT: gke-demo
+
+gcp:
+  projectId: gke-demo
+  region: us-central1
+  zone: us-central1-c

@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: order-service
+  repository: gcr.io/gke-demo/order-service
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -9,18 +9,21 @@ nameOverride: ""
 fullnameOverride: ""
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 80
   targetPort: 8080
 
 ingress:
   enabled: true
-  className: nginx
+  className: gce
+  annotations:
+    kubernetes.io/ingress.class: gce
+    kubernetes.io/ingress.global-static-ip-name: "order-service-ip"
   hosts:
-    - host: order-service.local
+    - host: order-service.gke-demo.com
       paths:
-        - path: /
-          pathType: Prefix
+        - path: /*
+          pathType: ImplementationSpecific
 
 resources:
   limits:
@@ -39,6 +42,13 @@ autoscaling:
 env:
   SPRING_PROFILES_ACTIVE: prod
   SERVER_PORT: 8080
+  GOOGLE_CLOUD_PROJECT: gke-demo
+
+gcp:
+  projectId: gke-demo
+  region: us-central1
+  zone: us-central1-c
+  serviceAccountSecret: order-service-sa-key
 
 configMap:
   enabled: true
